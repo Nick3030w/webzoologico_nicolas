@@ -27,6 +27,7 @@ export class AnimalComponent {
     });
   }
   ngOnInit() {
+    this.animalForm = this.formBuilder.group({ nombre: '', edad: 0, tipo: '' });
     this.getAllAnimals();
   }
   newMessage(messageText: string) {
@@ -34,5 +35,13 @@ export class AnimalComponent {
       .success('Clic aquí para actualizar la lista', messageText)
       .onTap.pipe(take(1))
       .subscribe(() => window.location.reload());
+  }
+  newAnimalEntry() {
+    this.animalService.newAnimal(this.animalForm.value).subscribe(() => {
+      //Redirigiendo a la ruta actual /inicio y recargando la ventana
+      this.router.navigate(['/inicio']).then(() => {
+        this.newMessage('Registro exitoso');
+      });
+    });
   }
 }
