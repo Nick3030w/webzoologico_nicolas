@@ -6,7 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AnimalService {
-  apiUri = '/api/animals';
+  apiUri = '/api/animalsall';
+  apiUri2 = '/api/animal';
   httpOptions = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) {}
